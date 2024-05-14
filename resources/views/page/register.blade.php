@@ -31,27 +31,40 @@
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>Pendaftaran</h3>
-                    <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row login_form" action="{{route('register')}}" method="post" id="contactForm" novalidate="novalidate">
+                        @csrf
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap'">
                         </div>
+                        @error('name')
+                        <div>{{ $message }}</div>
+                        @enderror
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap'">
                         </div>
+                        @error('email')
+                        <div>{{ $message }}</div>
+                        @enderror
                         <div class="col-md-12 form-group">
-                            <input type="number" class="form-control" id="name" name="name" placeholder="Nomor Telepon" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                            <input type="number" class="form-control" id="hp" name="hp" placeholder="Nomor Telepon" onfocus="this.placeholder = ''" onblur="this.placeholder = 'HP'">
                         </div>
+                        @error('hp')
+                        <div>{{ $message }}</div>
+                        @enderror
                         <div class="col-md-12 form-group">
-                            <input type="date" class="form-control" id="name" name="name" placeholder="Tanggal Lahir" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Alamat" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat'">
                         </div>
+                        @error('alamat')
+                        <div>{{ $message }}</div>
+                        @enderror
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
                         </div>
+                        @error('password')
+                        <div>{{ $message }}</div>
+                        @enderror
                         <div class="col-md-12 form-group">
-
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <button type="button" onclick="location.href='login.html'" value="submit" class="primary-btn">Daftar Sekarang</button>
+                            <button type="submit" value="submit" class="primary-btn">Daftar Sekarang</button>
                         </div>
                     </form>
                 </div>

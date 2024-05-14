@@ -25,19 +25,26 @@
                     <div class="hover">
                         <h4>Chems Batik</h4>
                         <p>Pusat toko batik kimia</p>
-                        <a class="primary-btn" href="Register.html">Buat akun baru</a>
+                        <a class="primary-btn" href="{{route('register')}}">Buat akun baru</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>Login pengguna</h3>
-                    <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                    <form class="row login_form" action="{{ route('login') }}" method="post" id="contactForm" novalidate="novalidate">
+                        @csrf
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Username" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
+                            @error('email')
+                            <div>{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-12 form-group">
-                            <input type="password" required class="form-control" id="name" name="name" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                            <input type="password" required class="form-control" id="password" name="password" required placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+                            @error('password')
+                            <div>{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="col-md-12 form-group">
                             <div class="creat_account">
@@ -47,7 +54,7 @@
 
                         </div>
                         <div class="col-md-12 form-group">
-                            <button type="button" onclick="location.href='index.html'" value="submit" class="primary-btn">Log In</button>
+                            <button type="submit" onclick="location.href='index.html'" value="submit" class="primary-btn">Log In</button>
 
                             <div class="remember-forgot" onclick="location.href='Lupapassword.html'">
                                 <a href="#">Lupa katasandi</a>
