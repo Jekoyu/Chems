@@ -9,7 +9,6 @@
         <div class="row">
             @include('admin.partials.aside')
             @yield('content')
-
         </div>
     </div>
     @include('admin.partials.script')

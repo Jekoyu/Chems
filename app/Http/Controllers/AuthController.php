@@ -11,11 +11,15 @@ use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('guest', ['except' => 'logout']);
+    }
     public function showLogin()
     {
         return view('default', [
             'title' => 'Login',
-            'content' => view('page.Login')
+            'content' => view('page.login')
         ]);
     }
     public function login(Request $request)
@@ -47,7 +51,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 

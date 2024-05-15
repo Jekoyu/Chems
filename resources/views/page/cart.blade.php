@@ -6,7 +6,7 @@
              <div class="col-first">
                  <h1>Keranjang Produk</h1>
                  <nav class="d-flex align-items-center">
-                     <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                     <a href="{{route('/'}}">Home<span class="lnr lnr-arrow-right"></span></a>
                      <a href="category.html">Keranjang</a>
                  </nav>
              </div>
