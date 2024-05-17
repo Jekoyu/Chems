@@ -52,6 +52,7 @@ Route::get('/product', [ProductController::class, 'index'])->name('adminProduct'
 Route::get('/product/get', [ProductController::class, 'getProduct'])->name('getProduct');
 Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('delProduct');
 Route::get('/product/create', [ProductController::class, 'create'])->name('createProduct');
+Route::get('/product/add', [ProductController::class, 'add'])->name('addProduct');
 Route::post('/product/save', [ProductController::class, 'save'])->name('storeProduct');
 // });
 Route::get('/pelanggan', [UserController::class, 'index'])->name('adminUser');

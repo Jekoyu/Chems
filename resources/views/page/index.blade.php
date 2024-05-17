@@ -10,7 +10,7 @@
                         <div class="col-lg-5 col-md-6">
                             <div class="banner-content">
                                 <h1>Batik kimia<br>Collection!</h1>
-                                <p>sdfadfavasbawrgs.</p>
+                                <!-- <p>sdfadfavasbawrgs.</p> -->
                                 <div class="add-bag d-flex align-items-center">
                                     <a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
                                     <span class="add-text text-uppercase">Tambah ke keranjang</span>
@@ -24,14 +24,24 @@
                         </div>
                     </div>
                     <!-- single-slide -->
-                    <div class="row single-slide">
-                        <div class="col-lg-5">
-
+                    <div class="row single-slide ">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="banner-content">
+                                <h1>Konten Kami !!<br></h1>
+                                <!-- <p>sdfadfavasbawrgs.</p> -->
+                                <div class="add-bag d-flex align-items-center">
+                                    <a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
+                                    <span class="add-text text-uppercase">Tambah ke keranjang</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-7">
                             <div class="banner-img">
-                                <img class="img-fluid" src="img/banner/banner-img.png" alt="">
+                                <video width="550" height="350" controls>
+                                    <source src="img/banner/videoweb.MOV">
+                                </video>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -743,7 +753,7 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="single-related-product d-flex">
-                            <a href="#"><img src="img/r9.jpg" alt="" style="width:70px;height:70px;"></a>
+                            <a href="#"><img src="img/r7.jpg" alt="" style="width:70px;height:70px;"></a>
                             <div class="desc">
                                 <a href="#" class="title">Batik sumping</a>
                                 <div class="price">

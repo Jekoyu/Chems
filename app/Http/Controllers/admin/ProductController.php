@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Model;
 use Yajra\DataTables\Facades\DataTables;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -24,7 +25,7 @@ class ProductController extends Controller
     {
         return view('admin.default', [
             'title' => 'Produk',
-            'content' => view('admin.page.product', [
+            'content' => view('admin.page.produk.product', [
                 'title' => 'Produk',
             ])
         ]);
@@ -45,7 +46,7 @@ class ProductController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '<div class="btn-group" role="group">';
-                    $btn .= '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a>';
+                $btn .= '<a href="' . route('addProduct') . '" class="edit btn btn-success btn-sm">Edit</a>';
                     $btn .= ' <span style="margin-left: 5px;"></span>';
                     $btn .= '<form action="' . route('delProduct', $row->id) . '" method="POST">';
                     $btn .= '<input type="hidden" name="_method" value="DELETE">';
@@ -61,8 +62,17 @@ class ProductController extends Controller
 
         return abort(404);
     }
+    public function add()
+    {
+        return view('admin.default', [
+            'title' => 'Add Produk',
+            'content' => view('admin.page.produk.form', [
+                'title' => 'Add Produk',
+            ])
+        ]);
+    }
 
-    public function save(Request $request)
+    public function save(Request $request): RedirectResponse
     {
         // Validasi data jika diperlukan
         $request->validate([
@@ -73,11 +83,15 @@ class ProductController extends Controller
             'gambar' => 'image|mimes:jpeg,png,jpg,gif', // Validasi untuk gambar
         ]);
 
+        // echo $request->gambar;
+
+        
         // Simpan gambar
         if ($request->gambar === null) {
             $gambarPath = null;
         } else {
-            $gambarPath = $request->file('gambar')->store('public/images');
+            $gambarPath = $request->file('gambar');
+            $gambarPath->storeAs('public/gambar', $gambarPath->hashName());
         }
         // Buat array data untuk disimpan ke dalam database
         $data = [

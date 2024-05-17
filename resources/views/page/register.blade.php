@@ -40,7 +40,7 @@
                         <div>{{ $message }}</div>
                         @enderror
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap'">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                         </div>
                         @error('email')
                         <div>{{ $message }}</div>

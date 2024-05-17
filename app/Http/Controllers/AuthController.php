@@ -89,7 +89,7 @@ class AuthController extends Controller
         if ($user->is_admin) {
             return redirect()->route('adminHome');
         } else {
-            return redirect()->intended('/');
+            return redirect()->intended('/login');
         }
     }
     public function forgotPassword()
