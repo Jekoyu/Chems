@@ -19,43 +19,39 @@ class KategoriController extends Controller
 
     public function index()
     {
+        $data = $this->model->get();
         return view('admin.default', [
             'title' => 'Kategori',
-            'content' => view('admin.page.kategori', [
+            'content' => view('admin.page.kategori.kategori', [
                 'title' => 'Kategori',
+                'data' => $data
             ])
         ]);
     }
-    public function getProduct(Request $request)
+    public function edit($id)
     {
-        if ($request->ajax()) {
-            $column = ['id', 'nama'];
-            $query = $this->model->select($column);
-            return DataTables::eloquent($query)
-                ->addColumn('no', function () {
-                    static $index = 1;
-                    return $index++;
-                })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div class="btn-group" role="group">';
-                    $btn .= '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a>';
-                    $btn .= ' <span style="margin-left: 5px;"></span>';
-                    $btn .= '<form action="' . route('delProduct', $row->id) . '" method="POST">';
-                    $btn .= '<input type="hidden" name="_method" value="DELETE">';
-                    $btn .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-                    $btn .= '<button type="submit" class="btn btn-danger btn-sm" onclick="return confirm(\'Are you sure?\')">Delete</button>';
-                    $btn .= '</form>';
-                    $btn .= '</div>';
-                    return $btn;
-                })
-                ->rawColumns(['no', 'action'])
-                ->make(true);
-        }
 
-        return abort(404);
+        $kategori = $this->model->byId($id);
+        return view('admin.default', [
+            'title' => 'Kategori',
+            'content' => view('admin.page.kategori.edit', [
+                'title' => 'Kategori',
+                'kategori' => $kategori
+            ])
+        ]);
+    }
+    public function create()
+    {
+        return view('admin.default', [
+            'title' => 'Kategori',
+            'content' => view('admin.page.kategori.tambah', [
+                'title' => 'Kategori'
+            ])
+        ]);
     }
 
-    public function save(Request $request)
+
+    public function save(Request $request, $id = null)
     {
         // Validasi data jika diperlukan
         $request->validate([
@@ -63,28 +59,20 @@ class KategoriController extends Controller
 
         ]);
 
-        // Simpan gambar
-        if ($request->gambar === null) {
-            $gambarPath = null;
-        } else {
-            $gambarPath = $request->file('gambar')->store('public/images');
-        }
-        // Buat array data untuk disimpan ke dalam database
         $data = [
             'nama' => $request->nama,
-
         ];
-        if ($request->has('id')) {
-            $this->model->create($data, $request->id);
+        if ($id != null && !empty($id)) {
+            $this->model->create($data, $id);
         } else {
             $this->model->create($data);
         }
 
-        return redirect('/product')->with('success', 'Product saved successfully');
+        return redirect('/adminKategori')->with('success', 'Product saved successfully');
     }
     public function destroy($id)
     {
         $this->model->del($id);
-        return redirect('/product')->with('success', 'Product deleted successfully');
+        return redirect('/adminKategori')->with('success', 'Product deleted successfully');
     }
 }

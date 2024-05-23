@@ -15,6 +15,7 @@ use App\Http\Controllers\ConfirmationController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\SingleProductController;
 use App\Http\Controllers\Admin\KategoriController;
+use App\Http\Controllers\Admin\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +51,11 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/dashboard', [AdminController::class, 'index'])->name('adminHome');
 Route::get('/product', [ProductController::class, 'index'])->name('adminProduct');
 Route::get('/product/get', [ProductController::class, 'getProduct'])->name('getProduct');
+Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('editProduct');
 Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('delProduct');
-Route::get('/product/create', [ProductController::class, 'create'])->name('createProduct');
-Route::get('/product/add', [ProductController::class, 'add'])->name('addProduct');
-Route::post('/product/save', [ProductController::class, 'save'])->name('storeProduct');
+Route::post('/product/create', [ProductController::class, 'save'])->name('createProduct');
+Route::get('/product/add', [ProductController::class, 'create'])->name('tambahProduct');
+Route::put('/product/{id}', [ProductController::class, 'save'])->name('updateProduct');
 // });
 Route::get('/pelanggan', [UserController::class, 'index'])->name('adminUser');
 Route::get('/pelanggan/get', [UserController::class, 'getProduct'])->name('getUser');
@@ -62,10 +64,21 @@ Route::get('/pelanggan/create', [UserController::class, 'create'])->name('create
 Route::post('/pelanggan/save', [UserController::class, 'save'])->name('storeUser');
 
 Route::get('/adminKategori', [KategoriController::class, 'index'])->name('adminKategori');
-Route::get('/adminKategori/get', [KategoriController::class, 'getProduct'])->name('getKategori');
 Route::delete('adminKategori/{id}', [KategoriController::class, 'destroy'])->name('delKategori');
-Route::get('/adminKategori/create', [KategoriController::class, 'create'])->name('createKategori');
-Route::post('/adminKategori/save', [KategoriController::class, 'save'])->name('storeKategori');
+Route::get('adminKategori/create', [KategoriController::class, 'create'])->name('tambahKategori');
+Route::post('adminKategori', [KategoriController::class, 'save'])->name('simpanKategori');
+Route::get('adminKategori/edit/{id}', [KategoriController::class, 'edit'])->name('editKategori');
+Route::put('adminKategori/{id}', [KategoriController::class, 'save'])->name('updateKategori');
+
+
+Route::get('/adminTransaksi', [TransaksiController::class, 'index'])->name('adminTransaksi');
+Route::delete('adminTransaksi/{id}', [TransaksiController::class, 'destroy'])->name('delTransaksi');
+Route::get('adminTransaksi/create', [TransaksiController::class, 'create'])->name('tambahTransaksi');
+Route::post('adminTransaksi', [TransaksiController::class, 'save'])->name('simpanTransaksi');
+Route::post('/adminTransaksi/create', [TransaksiController::class, 'save'])->name('createTransaksi');
+Route::get('adminTransaksi/edit/{id}', [TransaksiController::class, 'edit'])->name('editTransaksi');
+Route::put('adminTransaksi/{id}', [TransaksiController::class, 'save'])->name('updateTransaksi');
+
 
 //User Login
 Route::middleware(['auth'])->group(function () {

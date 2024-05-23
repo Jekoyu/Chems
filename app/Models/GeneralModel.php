@@ -14,6 +14,13 @@ class GeneralModel extends Model
     {
         $this->table = $table;
     }
+    public function join($table1, $table2, $foreignKey1, $foreignKey2, $columns = ['*'])
+    {
+        return DB::table($table1)
+            ->join($table2, $foreignKey1, '=', $foreignKey2)
+            ->select($columns)
+            ->get();
+    }
 
     public function get()
     {

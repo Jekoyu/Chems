@@ -21,7 +21,7 @@ class UserController extends Controller
     {
         return view('admin.default', [
             'title' => 'Pelanggan',
-            'content' => view('admin.page.pelanggan', [
+            'content' => view('admin.page.pelanggan.pelanggan', [
                 'title' => 'Pelanggan',
             ])
         ]);

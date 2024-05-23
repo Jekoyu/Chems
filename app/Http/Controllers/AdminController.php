@@ -16,6 +16,7 @@ class AdminController extends Controller
                 'title' => 'Dashboard'
             ])
         ]);
+        // return view('admin.page.sb');
     }
 
     

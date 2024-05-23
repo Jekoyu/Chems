@@ -1,76 +1,70 @@
- <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
-     <div class="offcanvas-md offcanvas-end bg-body-tertiary" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
-         <div class="offcanvas-header">
-             <h5 class="offcanvas-title" id="sidebarMenuLabel">Chems Batik</h5>
-             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
-         </div>
-         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-             <ul class="nav flex-column">
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{route('adminHome')}}">
-                         <svg class="bi">
-                             <use xlink:href="#house-fill" />
-                         </svg>
-                         Dashboard
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="#">
-                         <svg class="bi">
-                             <use xlink:href="#file-earmark" />
-                         </svg>
-                         Transaksi
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="{{route('adminProduct')}}">
-                         <svg class="bi">
-                             <use xlink:href="#cart" />
-                         </svg>
-                         Produk
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="{{route('adminKategori')}}">
-                         <svg class="bi">
-                             <use xlink:href="#cart" />
-                         </svg>
-                         Kategori
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="{{route('adminUser')}}">
-                         <svg class="bi">
-                             <use xlink:href="#people" />
-                         </svg>
-                         Pelanggan/Pengguna
-                     </a>
-                 </li>
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="#">
-                         <svg class="bi">
-                             <use xlink:href="#graph-up" />
-                         </svg>
-                         laporan
-                     </a>
-                 </li>
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-             </ul>
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('adminHome')}}">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Chems Batik </div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="{{route('adminHome')}}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
 
 
 
-             <hr class="my-3">
-             <ul class="nav flex-column mb-auto">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-                 <li class="nav-item">
-                     <a class="nav-link d-flex align-items-center gap-2" href="{{route('logout')}}">
-                         <svg class="bi">
-                             <use xlink:href="#door-closed" />
-                         </svg>
-                         Sign out
-                     </a>
-                 </li>
-             </ul>
-         </div>
-     </div>
- </div>
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Addons
+    </div>
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminTransaksi')}}">
+            <i class="fas fa-fw fa-money"></i>
+            <span>Transaksi</span></a>
+    </li>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminProduct')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Produk</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminKategori')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Kategori</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('adminUser')}}">
+            <i class="fas fa-solid fa-user"></i>
+            <span>Pengguna</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Laporan</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
